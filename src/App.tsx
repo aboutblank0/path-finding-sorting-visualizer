@@ -9,12 +9,6 @@ import { SortingContextProvider } from "./contexts/sortingContext";
 import { PathfindingContextProvider } from "./contexts/pathfindingContext";
 
 function App() {
-  const sortingUrls = ["sorting-visualizer", "sorting-visualizer/:algorithm"];
-  const pathfindingUrls = [
-    "pathfinding-visualizer",
-    "pathfinding-visualizer/:algorithm",
-  ];
-
   const SortingPage = () => {
     return (
       <SortingContextProvider>
@@ -31,21 +25,17 @@ function App() {
     );
   };
 
-  const sortingRoutes = sortingUrls.map((url) => (
-    <Route key='sorting' path={url} element={<SortingPage />} />
-  ));
-
-  const pathfindingRoutes = pathfindingUrls.map((url) => (
-    <Route key='pathfinding' path={url} element={<PathfindingPage />} />
-  ));
-
   return (
     <div>
       <NavBar />
       <Routes>
-        <Route path='/' element={<Navigate to={"/sorting-visualizer"} />} />
-        {sortingRoutes}
-        {pathfindingRoutes}
+        <Route path='/' element={<Navigate to={"/sorting"} />} />
+        <Route key='sorting' path='/sorting' element={<SortingPage />} />
+        <Route
+          key='pathfinding'
+          path='/pathfinding'
+          element={<PathfindingPage />}
+        />
       </Routes>
     </div>
   );

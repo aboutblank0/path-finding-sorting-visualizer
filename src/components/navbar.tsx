@@ -11,8 +11,8 @@ const NavBar = () => {
           <h1 className='my-logo'>[about:Blank]</h1>
         </div>
         <ul>
-          <PageLink to={"/sorting-visualizer/"} text='SORTING' />
-          <PageLink to={"/pathfinding-visualizer/"} text='PATHFINDING' />
+          <PageLink to={"/sorting"} text='SORTING' />
+          <PageLink to={"/pathfinding"} text='PATHFINDING' />
         </ul>
       </div>
       <div className='nav-bar-right'>

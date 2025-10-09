@@ -1,30 +1,10 @@
 import { PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-import { useEffect } from "react";
-import { useSorting } from "../contexts/sortingContext";
 import useMediaQuery from "../hooks/useMediaQuery";
-import { useNavigate, useParams } from "react-router-dom";
 import SortingControlsPanel from "../components/sorting/sortingControlsPanel";
 import SortingVisualizePanel from "../components/sorting/sortingVisualizePanel";
-import { isValidSortingAlgorithm } from "../types/sortingAlgorithm";
 
 export default function Sorting() {
-  const sortingContext = useSorting();
   const isMediumScreen = useMediaQuery("(max-width: 768px)");
-
-  const params = useParams();
-  const navigate = useNavigate();
-
-  //Change the URL based on the algorithm
-  useEffect(() => {
-    navigate(`/sorting-visualizer/${sortingContext.sortingAlgorithm}`);
-  }, [sortingContext.sortingAlgorithm, navigate]);
-
-  //Change the algorithm based on the URL (on mount)
-  useEffect(() => {
-    const algorithm = params.algorithm;
-    if (algorithm && isValidSortingAlgorithm(algorithm))
-      sortingContext.setAlgorithm(algorithm);
-  }, []);
 
   return (
     <div className='page'>
