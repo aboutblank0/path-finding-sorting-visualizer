@@ -13,6 +13,12 @@ export enum SortingIterationStepAction {
 }
 
 /**
+ * Sorts `arr` in place, mutating it directly.
+ * Returns the list of steps taken so the mutation can be animated/replayed.
+ */
+export type SortFunction = (arr: number[]) => SortingIterationStep[];
+
+/**
  * Helper function to get the state of the data at a given step index.
  * (Apply every instruction from the first step to the given step index)
  *

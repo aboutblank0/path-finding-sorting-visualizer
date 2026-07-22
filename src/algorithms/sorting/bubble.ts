@@ -1,8 +1,9 @@
 import SortingIterationStep, {
+  SortFunction,
   SortingIterationStepAction,
 } from "../../types/sortingIterationStep";
 
-export function bubbleSort(input: number[]): SortingIterationStep[] {
+const bubbleSort: SortFunction = (input) => {
   const iterationSteps: SortingIterationStep[] = [];
   for (let i = 0; i < input.length; i++) {
     for (let j = 0; j < input.length - i - 1; j++) {
@@ -17,4 +18,6 @@ export function bubbleSort(input: number[]): SortingIterationStep[] {
     }
   }
   return iterationSteps;
-}
+};
+
+export default bubbleSort;

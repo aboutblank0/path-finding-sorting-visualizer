@@ -1,8 +1,9 @@
 import SortingIterationStep, {
+  SortFunction,
   SortingIterationStepAction,
 } from "../../types/sortingIterationStep";
 
-export default function gnomeSort(input: number[]): SortingIterationStep[] {
+const gnomeSort: SortFunction = (input) => {
   const iterationSteps: SortingIterationStep[] = [];
   function moveBack(i: number) {
     for (; i > 0 && input[i - 1] > input[i]; i--) {
@@ -21,4 +22,6 @@ export default function gnomeSort(input: number[]): SortingIterationStep[] {
   }
 
   return iterationSteps;
-}
+};
+
+export default gnomeSort;

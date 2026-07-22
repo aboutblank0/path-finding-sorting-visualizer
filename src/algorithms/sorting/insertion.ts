@@ -1,8 +1,9 @@
 import SortingIterationStep, {
+  SortFunction,
   SortingIterationStepAction,
 } from "../../types/sortingIterationStep";
 
-export default function insertionSort(input: number[]): SortingIterationStep[] {
+const insertionSort: SortFunction = (input) => {
   const iterationSteps: SortingIterationStep[] = [];
   for (let i = 1; i < input.length; i++) {
     const current = input[i];
@@ -30,4 +31,6 @@ export default function insertionSort(input: number[]): SortingIterationStep[] {
   }
 
   return iterationSteps;
-}
+};
+
+export default insertionSort;

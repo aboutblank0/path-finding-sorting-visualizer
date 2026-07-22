@@ -1,8 +1,9 @@
 import SortingIterationStep, {
+  SortFunction,
   SortingIterationStepAction,
 } from "../../types/sortingIterationStep";
 
-export default function mergeSort(input: number[]): SortingIterationStep[] {
+const mergeSort: SortFunction = (input) => {
   const iterationSteps: SortingIterationStep[] = [];
 
   const mergeSort = (input: number[], offset = 0): number[] => {
@@ -48,15 +49,18 @@ export default function mergeSort(input: number[]): SortingIterationStep[] {
     return [...arr, ...left, ...right];
   }
 
-  input = mergeSort(input);
+  const sorted = mergeSort(input);
 
-  for (let i = 0; i < input.length; i++) {
+  for (let i = 0; i < sorted.length; i++) {
+    input[i] = sorted[i];
     iterationSteps.push({
       action: SortingIterationStepAction.INSERT,
       indexes: [i],
-      insert: input[i],
+      insert: sorted[i],
     });
   }
 
   return iterationSteps;
-}
+};
+
+export default mergeSort;

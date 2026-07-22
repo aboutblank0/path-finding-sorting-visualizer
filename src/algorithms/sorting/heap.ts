@@ -1,8 +1,9 @@
 import SortingIterationStep, {
+  SortFunction,
   SortingIterationStepAction,
 } from "../../types/sortingIterationStep";
 
-export default function heapSort(input: number[]): SortingIterationStep[] {
+const heapSort: SortFunction = (input) => {
   const iterationSteps: SortingIterationStep[] = [];
   function sort(array: number[]) {
     const size = array.length;
@@ -49,4 +50,6 @@ export default function heapSort(input: number[]): SortingIterationStep[] {
   sort(input);
 
   return iterationSteps;
-}
+};
+
+export default heapSort;

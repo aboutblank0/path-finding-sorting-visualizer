@@ -2,8 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import SortingIterationStep, {
   SortingIterationStepAction,
 } from "../types/sortingIterationStep";
-import { quickSort } from "../algorithms/sorting/quick";
-import { bubbleSort } from "../algorithms/sorting/bubble";
 import { Note, NotePlayer } from "../utils/audio";
 import {
   SortingAlgorithm
@@ -12,6 +10,8 @@ import insertionSort from "../algorithms/sorting/insertion";
 import gnomeSort from "../algorithms/sorting/gnome";
 import mergeSort from "../algorithms/sorting/merge";
 import heapSort from "../algorithms/sorting/heap";
+import bubbleSort from "../algorithms/sorting/bubble";
+import quickSort from "../algorithms/sorting/quick";
 
 export const DEFAULT_SORTING_ALGORITHM = SortingAlgorithm.QUICK;
 const DEFAULT_INPUT_SIZE = 100;
@@ -153,7 +153,7 @@ export function useSorting() {
 function sort(input: number[], algorithm: SortingAlgorithm) {
   const inputCopy = [...input];
 
-  let result = []
+  let result: SortingIterationStep[] = []
   switch (algorithm) {
     case SortingAlgorithm.QUICK:
       result = quickSort(inputCopy);
@@ -177,7 +177,6 @@ function sort(input: number[], algorithm: SortingAlgorithm) {
 
   // Add Manual steps where it goes from 0 index to last. Creating a similar effect/animation to those sorting youtube videos
   for (let i = 0; i < input.length; i++){
-    console.log("Adding step")
     const step: SortingIterationStep = {
       action: SortingIterationStepAction.INSERT,
       indexes: [i],

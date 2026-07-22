@@ -1,8 +1,9 @@
 import SortingIterationStep, {
+  SortFunction,
   SortingIterationStepAction,
 } from "../../types/sortingIterationStep";
 
-export function quickSort(arr: number[]): SortingIterationStep[] {
+const quickSort: SortFunction = (arr) => {
   const iterationSteps: SortingIterationStep[] = [];
   const low = 0;
   const high = arr.length - 1;
@@ -53,4 +54,6 @@ export function quickSort(arr: number[]): SortingIterationStep[] {
   _quickSort(arr, low, high);
 
   return iterationSteps;
-}
+};
+
+export default quickSort;
