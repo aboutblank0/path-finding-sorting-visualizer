@@ -1,19 +1,24 @@
 .number-input-field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 
 .number-input-label {
   color: var(--text-header-color);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .number-input-input {
-  padding: 0;
+  padding: 0.5rem 0.6rem;
   border: none;
-  background-color: var(--bg-color-2);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-color-1);
   color: var(--text-color);
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  width: 100%;
 }

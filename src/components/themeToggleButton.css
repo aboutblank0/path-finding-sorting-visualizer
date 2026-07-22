@@ -1,15 +1,23 @@
 .theme-toggle-btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
   border: none;
+  border-radius: 999px;
   background: none;
-  padding: 2px;
+  padding: 0;
   cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--color-300);
 }
 
 .theme-svg {
-  fill: #000;
-}
-
-body.dark .theme-svg {
-  fill: #fff;
+  width: 18px;
+  height: 18px;
+  fill: var(--text-color);
 }

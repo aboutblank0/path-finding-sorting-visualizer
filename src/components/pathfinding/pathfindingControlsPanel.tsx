@@ -1,8 +1,7 @@
 import { Panel, PanelProps } from "react-resizable-panels";
 import { usePathfinding } from "../../contexts/pathfindingContext";
 import {
-  PathfindingAlgorithm,
-  isValidPathfindingAlgorithm,
+  PathfindingAlgorithm
 } from "../../types/pathfindingAlgorithm";
 import DropDown from "../dropDown";
 import NumberInputField from "../numberInputField";
@@ -12,9 +11,7 @@ export default function PathfindingControlsPanel(props: PanelProps) {
   const pathfindingContext = usePathfinding();
 
   const onAlgorithmSelected = (value: string) => {
-    if (isValidPathfindingAlgorithm(value)) {
-      pathfindingContext.setAlgorithm(value);
-    }
+    pathfindingContext.setAlgorithm(value as PathfindingAlgorithm);
   };
 
   return (
@@ -52,13 +49,13 @@ export default function PathfindingControlsPanel(props: PanelProps) {
           />
         ) : null}
         <button
-          className='standard-button outline-card'
+          className='standard-button'
           onClick={() => pathfindingContext.generateMaze()}
         >
           Generate Maze
         </button>
         <button
-          className='standard-button outline-card'
+          className='standard-button'
           onClick={() => pathfindingContext.clearGrid()}
         >
           Clear Grid

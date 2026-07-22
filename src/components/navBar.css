@@ -1,25 +1,40 @@
 .nav-bar {
-  background-color: var(--color-300);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  position: relative;
+  background-color: var(--bg-color-2);
+  border-bottom: 1px solid var(--color-400);
+  position: sticky;
+  top: 0;
   z-index: 10;
   justify-content: space-between;
   display: flex;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   min-height: var(--nav-height);
   max-height: var(--nav-height);
 }
 
 .nav-bar a {
   text-decoration: none;
-  color: var(--color-500);
-  margin: 0 10px;
-  font-weight: 900;
-  padding: 0.25rem;
+  color: var(--text-header-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-md);
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
-.nav-bar li.active {
-  background-color: var(--bg-color-2);
+.nav-bar li a:hover {
+  color: var(--text-color);
+  background-color: var(--color-300);
+}
+
+.nav-bar li.active a {
+  color: var(--accent-contrast);
+  background-color: var(--accent);
+}
+
+.nav-bar li.active a:hover {
+  color: var(--accent-contrast);
+  background-color: var(--accent-hover);
 }
 
 .nav-bar ul {
@@ -27,7 +42,8 @@
   margin: 0;
   list-style: none;
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .nav-bar li {
@@ -35,21 +51,10 @@
   align-items: center;
 }
 
-.my-logo-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.my-logo {
-  color: var(--color-500);
-}
-
 .nav-bar-left {
   display: flex;
   align-items: stretch;
   gap: 1rem;
-  margin-left: 0.5rem;
 }
 
 .nav-bar-left a {
@@ -59,28 +64,21 @@
 .nav-bar-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-right: 0.5rem;
+  gap: 0.75rem;
 }
 
 /* on Small Screens */
 @media (max-width: 768px) {
   .nav-bar {
+    padding: 0 0.5rem;
+  }
+
+  .nav-bar a {
     font-size: 0.8rem;
-    overflow: hidden;
+    padding: 0.4rem 0.6rem;
   }
 
-  .my-logo {
-    display: none;
-    width: 0px;
-  }
-
-  .nav-bar {
-    padding: 0;
-  }
-
-  .nav-bar-left {
-    gap: 0;
-    margin-left: 0;
+  .nav-bar ul {
+    gap: 0.15rem;
   }
 }

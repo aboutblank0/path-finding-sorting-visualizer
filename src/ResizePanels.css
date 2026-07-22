@@ -4,22 +4,48 @@
 
 .resize-handle {
   position: relative;
+  flex: 0 0 1px;
+  background-color: var(--color-400);
+  transition: background-color 0.15s ease;
+  z-index: 5;
 }
 
-.resize-handle[data-resize-handle-active]::before {
-  background-color: black;
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  transform: translateY(-50%);
+.resize-handle:hover,
+.resize-handle[data-resize-handle-active] {
+  background-color: var(--accent);
+}
+
+.resize-handle::after {
   content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 999px;
+  background-color: var(--color-400);
+  transition: background-color 0.15s ease;
 }
 
-@media (min-width: 768px) {
-  .resize-handle[data-resize-handle-active]::before {
-    width: 4px;
-    height: 100%;
-    transform: none;
-    translate: -2px;
-  }
+.resize-handle:hover::after,
+.resize-handle[data-resize-handle-active]::after {
+  background-color: var(--accent);
+}
+
+.resize-handle[data-panel-group-direction="horizontal"] {
+  cursor: col-resize;
+}
+
+.resize-handle[data-panel-group-direction="horizontal"]::after {
+  width: 4px;
+  height: 32px;
+  transform: translate(-50%, -50%);
+}
+
+.resize-handle[data-panel-group-direction="vertical"] {
+  cursor: row-resize;
+}
+
+.resize-handle[data-panel-group-direction="vertical"]::after {
+  width: 32px;
+  height: 4px;
+  transform: translate(-50%, -50%);
 }

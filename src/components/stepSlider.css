@@ -2,23 +2,44 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 0.25rem;
+  gap: 0.35rem;
 }
 
 .play-button,
 .pause-button {
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
-  fill: var(--color-500);
+  fill: var(--accent);
+  flex-shrink: 0;
+  transition: fill 0.15s ease, transform 0.1s ease;
+}
+
+.play-button:hover,
+.pause-button:hover {
+  fill: var(--accent-hover);
+}
+
+.play-button:active,
+.pause-button:active {
+  transform: scale(0.92);
 }
 
 .slider {
   display: flex;
+  align-items: center;
+  gap: 0.6rem;
   width: 100%;
 }
 
+input[type="range"].slider {
+  accent-color: var(--accent);
+  height: 20px;
+  cursor: pointer;
+}
+
 .step-slider-label {
-  color: var(--color-500);
-  font-weight: 550;
+  color: var(--text-header-color);
+  font-size: 0.8rem;
+  font-weight: 600;
 }

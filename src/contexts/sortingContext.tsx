@@ -6,8 +6,7 @@ import { quickSort } from "../algorithms/sorting/quick";
 import { bubbleSort } from "../algorithms/sorting/bubble";
 import { Note, NotePlayer } from "../utils/audio";
 import {
-  SortingAlgorithm,
-  isValidSortingAlgorithm,
+  SortingAlgorithm
 } from "../types/sortingAlgorithm";
 import insertionSort from "../algorithms/sorting/insertion";
 import gnomeSort from "../algorithms/sorting/gnome";
@@ -43,12 +42,12 @@ const SortingContext = createContext<SortingContextType>({
   sortingAlgorithm: DEFAULT_SORTING_ALGORITHM,
   playbackTimeS: DEFAULT_PLAYBACK_TIME_SECONDS,
   audioEnabled: true,
-  playStepAudio: () => {},
-  setAudioEnabled: () => {},
-  setInputSize: () => {},
-  setAlgorithm: () => {},
-  setPlaybackTime: () => {},
-  generateInput: () => {},
+  playStepAudio: () => { },
+  setAudioEnabled: () => { },
+  setInputSize: () => { },
+  setAlgorithm: () => { },
+  setPlaybackTime: () => { },
+  generateInput: () => { },
 });
 
 export function SortingContextProvider({
@@ -83,7 +82,6 @@ export function SortingContextProvider({
   }, [inputSize]);
 
   const setSortingAlgorithm = (algorithm: SortingAlgorithm) => {
-    if (!isValidSortingAlgorithm(algorithm)) return;
     if (algorithm !== sortingAlgorithm) {
       setAlgorithm(algorithm);
       generateInput();

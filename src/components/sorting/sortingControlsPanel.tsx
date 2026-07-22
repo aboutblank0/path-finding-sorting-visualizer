@@ -5,16 +5,13 @@ import DropDown from "../dropDown";
 import Toggle from "../toggle";
 import {
   SortingAlgorithm,
-  isValidSortingAlgorithm,
 } from "../../types/sortingAlgorithm";
 
 export default function SortingControlsPanel(props: PanelProps) {
   const sortingContext = useSorting();
 
   const onAlgorithmSelected = (value: string) => {
-    if (isValidSortingAlgorithm(value)) {
-      sortingContext.setAlgorithm(value);
-    }
+    sortingContext.setAlgorithm(value as SortingAlgorithm);
   };
 
   return (

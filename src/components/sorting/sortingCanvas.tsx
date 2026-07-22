@@ -18,7 +18,7 @@ export default function SortingCanvas({ data, swap, ...props }: CanvasProps) {
     const canvas = canvasRef.current;
     const container = containerRef.current;
 
-    const barColor = theme.currentTheme === "light" ? "#986211" : "#d4d4d4";
+    const barColor = theme.currentTheme === "light" ? "#4f46e5" : "#d4d4d4";
 
     if (canvas && container) {
       const ctx = canvas.getContext("2d");
