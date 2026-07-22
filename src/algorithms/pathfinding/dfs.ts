@@ -33,21 +33,17 @@ export function dfs(
   const pathfindingSteps: PathfindingIterationStep[] = [];
   const s: DFSNode[] = [];
   const nodes: DFSNode[][] = [];
-  let startNode: DFSNode = new DFSNode({ x: 0, y: 0 });
 
   for (let x = 0; x < pathfindingGrid.grid.length; x++) {
     nodes.push([]);
     for (let y = 0; y < pathfindingGrid.grid[x].length; y++) {
-      const node = new DFSNode({ x, y });
-      nodes[x].push(node);
-
-      if (pathfindingGrid.grid[x][y].nodeType === GridNodeType.START) {
-        startNode = node;
-      }
+      nodes[x].push(new DFSNode({ x, y }));
     }
   }
 
+  const start = pathfindingGrid.startNode;
   const end = pathfindingGrid.endNode;
+  const startNode = nodes[start.x][start.y];
   s.push(startNode);
 
   while (s.length > 0) {
@@ -89,7 +85,7 @@ export function dfs(
   const path: Position[] = [];
   const endNode = nodes[end.x][end.y];
 
-  if (endNode.parent === null) return pathfindingSteps;
+  if (!endNode.visited) return pathfindingSteps;
 
   let current: DFSNode | null = endNode;
   while (current !== null) {

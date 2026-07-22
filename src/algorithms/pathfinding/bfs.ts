@@ -33,21 +33,17 @@ export function bfs(
   const pathfindingSteps: PathfindingIterationStep[] = [];
   const q: BFSNode[] = [];
   const nodes: BFSNode[][] = [];
-  let startNode: BFSNode = new BFSNode({ x: 0, y: 0 });
 
   for (let x = 0; x < pathfindingGrid.grid.length; x++) {
     nodes.push([]);
     for (let y = 0; y < pathfindingGrid.grid[x].length; y++) {
-      const node = new BFSNode({ x, y });
-      nodes[x].push(node);
-
-      if (pathfindingGrid.grid[x][y].nodeType === GridNodeType.START) {
-        startNode = node;
-      }
+      nodes[x].push(new BFSNode({ x, y }));
     }
   }
 
+  const start = pathfindingGrid.startNode;
   const end = pathfindingGrid.endNode;
+  const startNode = nodes[start.x][start.y];
   q.push(startNode);
 
   while (q.length > 0) {
@@ -92,7 +88,7 @@ export function bfs(
   const path: Position[] = [];
   const endNode = nodes[end.x][end.y];
 
-  if (endNode.parent === null) return pathfindingSteps;
+  if (!endNode.visited) return pathfindingSteps;
 
   let current: BFSNode | null = endNode;
   while (current !== null) {
