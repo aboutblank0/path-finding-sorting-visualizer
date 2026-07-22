@@ -152,18 +152,38 @@ export function useSorting() {
 
 function sort(input: number[], algorithm: SortingAlgorithm) {
   const inputCopy = [...input];
+
+  let result = []
   switch (algorithm) {
     case SortingAlgorithm.QUICK:
-      return quickSort(inputCopy);
+      result = quickSort(inputCopy);
+      break;
     case SortingAlgorithm.BUBBLE:
-      return bubbleSort(inputCopy);
+      result = bubbleSort(inputCopy);
+      break;
     case SortingAlgorithm.INSERTION:
-      return insertionSort(inputCopy);
+      result = insertionSort(inputCopy);
+      break
     case SortingAlgorithm.GNOME:
-      return gnomeSort(inputCopy);
+      result = gnomeSort(inputCopy);
+      break
     case SortingAlgorithm.MERGE:
-      return mergeSort(inputCopy);
+      result = mergeSort(inputCopy);
+      break
     case SortingAlgorithm.HEAP:
-      return heapSort(inputCopy);
+      result = heapSort(inputCopy);
+      break
   }
+
+  // Add Manual steps where it goes from 0 index to last. Creating a similar effect/animation to those sorting youtube videos
+  for (let i = 0; i < input.length; i++){
+    console.log("Adding step")
+    const step: SortingIterationStep = {
+      action: SortingIterationStepAction.INSERT,
+      indexes: [i],
+    }
+    result.push(step)
+  }
+
+  return result
 }
